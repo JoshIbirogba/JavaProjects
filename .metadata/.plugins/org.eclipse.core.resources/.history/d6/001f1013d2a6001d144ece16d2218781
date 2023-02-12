@@ -1,0 +1,36 @@
+package projects;
+
+public class BankAccountApp {
+
+	public static void main(String[] args) {
+		BankAccount account1 = new BankAccount("345217890");
+		BankAccount account2 = new BankAccount("582098123");
+		BankAccount account3 = new BankAccount("709251772");
+
+	}
+
+}
+
+class BankAccount {
+	
+	//properties of bank account
+	private static int iD = 1000;    //Internal ID generated/set
+	private String accountNumber;    // ID will be set by using the ID concatenated with 2 random integers and first two numbers of SSN
+	private static String routingNumber;
+	private String name;
+	private String SSN;
+	private double balance;
+	
+	//constructor
+	public BankAccount(String SSN) {
+		this.SSN = SSN;
+		iD++;
+		setAccountNumber();
+	}
+	
+	private void setAccountNumber() {
+		int random = (int) (Math.random()* 100);
+		accountNumber = iD + "" + random + SSN.substring(0,2);
+		System.out.println("Your account number : " + accountNumber);
+	}
+}

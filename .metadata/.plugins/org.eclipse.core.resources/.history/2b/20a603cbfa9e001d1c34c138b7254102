@@ -1,0 +1,40 @@
+package oop;
+
+public class BankAccount {
+
+
+	String name;
+	String accountNumber;
+	String routingNumber;
+	String SSN;
+	
+	//constructors
+	BankAccount(){
+		System.out.println("NEW ACCOUNT CREATED");
+	}
+	
+	//overloaded constructor
+	BankAccount(String accountType){
+		System.out.println("NEW ACCOUNT " + accountType);
+	}
+	
+	BankAccount(String accountType, double initDeposit){
+		System.out.println("NEW ACCOUNT" + accountType);
+		System.out.println("INITIAL DEPOSIT OF : $" + initDeposit);
+	}
+	
+	
+	//defined methods
+	void deposit() {
+		
+	}
+	
+	void withdraw () {
+		
+	}
+	
+	void checkBalance() {
+		
+	}
+	
+}

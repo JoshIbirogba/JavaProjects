@@ -1,0 +1,85 @@
+package projects;
+
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
+public class BankAccountApp {
+
+	public static void main(String[] args) {
+		BankAccount account1 = new BankAccount("345217890", 1000);
+		BankAccount account2 = new BankAccount("582098123", 2000);
+		BankAccount account3 = new BankAccount("709251772", 3000);
+		
+		account1.setName("Joshua Ibirogba");
+		System.out.println(account1.getName());
+		account1.makeDeposit(5000);
+		account1.payBill(2500);
+		account1.makeDeposit(10000);
+		account1.accrue();
+		System.out.println(account1.toString());
+	}
+
+}
+
+class BankAccount implements Interest {
+	
+	//properties of bank account
+	private static int iD = 1000;    //Internal ID generated/set
+	private String accountNumber;    // ID will be set by using the ID concatenated with 2 random integers and first two numbers of SSN
+	private static final String routingNumber = "23640193";
+	private String name;
+	private String SSN;
+	private static final DecimalFormat df = new DecimalFormat("0.00"); // rouds up double to two decimal places
+	private double balance;
+	
+	//constructor
+	public BankAccount(String SSN, double initDeposit) {
+	    balance = initDeposit;
+		this.SSN = SSN;
+		iD++;
+		setAccountNumber();
+	}
+	
+	private void setAccountNumber() {
+		int random = (int) (Math.random()* 100);
+		accountNumber = iD + "" + random + SSN.substring(0,2);
+		System.out.println("Your account number : " + accountNumber);
+		System.out.println();
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+		
+	}
+	public String getName() {
+		return name;
+	}
+	
+	public void payBill(double amount) {
+		balance = balance - amount;
+		System.out.println("Debit transaction successful " + amount);
+		showBalance();
+	}
+	
+	public void makeDeposit(double amount) {
+		balance = balance + amount;
+		System.out.println("Deposit Successful " + amount);
+		showBalance();
+	}
+	
+	public void showBalance() {
+		System.out.println("Your balance is : $" + df.format(balance));
+		System.out.println();
+	}
+	
+	@Override
+	public void accrue() {
+		balance = balance * (1 + rate / 100);
+		showBalance();
+	}
+	
+	@Override
+	public String toString () {
+		return "[Name : " + name + " ]\n[Account Number: " + accountNumber + "]\n" + "[Routing number: " + routingNumber + "]\n" + "[Balance " + df.format(balance) + "]";
+	}
+}

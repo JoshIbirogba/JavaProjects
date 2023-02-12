@@ -1,0 +1,75 @@
+package projects;
+
+public class StudentDatabase {
+
+	public static void main(String[] args) {
+		Student student1 = new Student ("JoshIbirogba", "567509185");
+		Student student2 = new Student ("Vokon", "245132267");
+		Student student3 = new Student ("JohnIni", "569743368");
+		
+		
+		student1.enroll("EN1010");
+		student1.enroll("CS2010");
+		student1.enroll("CS2910");
+	}
+}
+	
+	class Student {
+		
+		// properties of a student
+	private static int iD = 5000;
+	private String userID;
+	private	String name;
+	private String ssn;
+	private String email;
+	private String courses;
+	private static final int courseCost = 1500;
+	private int balance = 0;
+	
+	public Student (String name, String ssn) {
+		this.name = name;
+		this.ssn = ssn;
+		setEmail();
+		setUserID();
+	}
+	
+	//setter method for email
+	private void setEmail() {
+		iD++;
+		email = name.toLowerCase() + "." + iD + "@nwp.ca";
+		System.out.println("Your email: " + email);
+	}
+	
+	private void setUserID () {
+		int min = 1000;
+		int max = 9000;
+		int randNum = (int) (Math.random() * (max - min));
+		randNum += min;
+		userID = iD + "" + randNum + ssn.substring(6);
+		System.out.println("Your User ID is : " + userID);
+	}
+	
+	public void enroll (String course) {
+		this.courses = this.courses + "\n" + course;
+		balance += courseCost;
+	}
+	
+	public void payTuition() {
+		
+	}
+	
+	public void checkbalance() {
+		System.out.println("Balance : " + balance);
+		
+	}
+	
+	public void showCourses () {
+		System.out.println(courses);
+	}
+	
+	@Override
+	public String toString() {
+		
+		return null;
+	}
+}

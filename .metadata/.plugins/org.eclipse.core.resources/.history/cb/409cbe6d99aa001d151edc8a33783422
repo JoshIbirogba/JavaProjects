@@ -1,0 +1,33 @@
+package projects;
+
+public class StudentDatabase {
+
+	public static void main(String[] args) {
+		Student student1 = new Student ("JoshIbirogba", "5672314509");
+		
+	}
+}
+	
+	class Student {
+		
+		// properties of a student
+	private static int iD = 5000;
+	private	String name;
+	private String ssn;
+	private String email;
+	
+	public Student (String name, String ssn) {
+		this.name = name;
+		this.ssn = ssn;
+		setEmail();
+	}
+	
+	//setter method for email
+	private void setEmail() {
+		iD++;
+		email = name.toLowerCase() + "." + iD + "@nwp.ca";
+		System.out.println("Your email: " + email);
+	}
+	
+	
+}

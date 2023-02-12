@@ -1,0 +1,109 @@
+package projects;
+import java.util.Random;
+
+public class StudentDatabase {
+
+	public static void main(String[] args) {
+		
+		StudentInfo student1 = new StudentInfo("Joshua Ibirogba ", "276189024");
+		student1.setCity("Edmonton");
+		student1.setPhone("7802131178");
+		student1.setState("Alberta");
+		student1.getCity();
+		student1.getPhone();
+		student1.getState();
+		
+		System.out.println(student1.toString());
+		}
+
+}
+
+class StudentInfo {
+	private String name;
+	private String SSN;
+	private String city;
+	private double balance;
+	private static int id = 1000;
+	private String studentID;
+	private String email;
+	private String courses = null;
+	private String phone;
+	private String state;
+	
+	//create a constructor 
+	public StudentInfo (String name, String SSN ) {
+		this.name = name;
+		this.SSN = SSN;
+		setEmail();
+		setStudentID();
+		
+	}
+	
+	private void setEmail() {
+		email = name.toLowerCase() + "@student.com";
+	}
+	
+	
+	//method to generate a user id by using the static id, 4 random numbers and the last four numbers of SSN
+	private void setStudentID() {
+		int random = (int) (Math.random() * 9000 + 1000);
+		studentID = id + "" + random + SSN.substring(SSN.length() - 4);
+	}
+	
+	//Enroll in course(s)
+	public void enroll(String course){
+		this.courses = this.courses + "\n " + courses;
+	}
+	
+	//pay tuition
+	public void pay (double amount) {
+		balance = balance - amount;
+	}
+	
+	//check balance 
+	public double checkBalance () {
+		return balance;
+	}
+	
+	//Display information
+	@Override
+	public String toString () {
+		return "[NAME: " + name + "]\n[COURSES: " + courses + "]\n [Student ID: " + studentID + "]\n" + "[City: " + city + "]\n" + "[BALANCE: $" + balance + "]";
+	}           
+	
+	public void showCourses () {
+		System.out.println(courses);
+	}
+	
+	private double courseCost () {
+		return 1500.00;
+	}
+	
+	//getter and setter methods for phone, city and state
+	//phone
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	
+	//city
+	public void setCity (String city) {
+		this.city = city;
+	}
+	public String getCity () {
+		return city;
+	}
+	
+	//state
+	public void setState(String state) {
+		this.state = state;
+	}
+	
+	public String getState () {
+		return state;
+	}
+	
+	
+}

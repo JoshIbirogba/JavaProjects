@@ -1,0 +1,14 @@
+package oop;
+
+public class BankAccountApp {
+
+	public static void main(String[] args) {
+		BankAccount account1 = new BankAccount();
+		
+		BankAccount account2 = new BankAccount("Checking Account");
+	
+		BankAccount account3 = new BankAccount("Checking Account", 5000);
+
+	}
+
+}
